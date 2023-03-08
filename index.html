@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <meta http-equiv="ScreenOrientation" content="autoRotate:disabled">
+        <title>Document</title>
+        <link rel="stylesheet" href="styles/styles.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
+
+        <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+        <script src="scripts/scripts.js" defer></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    </head>
+    <body>
+        <main class="mods">
+            <section class="calculator-section">
+                <div class="calc-banner" style="display: none;">
+                    <div class="wrap">
+                        <header>simple loan calculator</header>
+                    </div>
+                </div>
+                <div class="wrap">
+                    <div class="header">
+                        <div class="content-main introductory">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur ea beatae quia commodi. A, perspiciatis nesciunt? At labore veritatis aperiam alias qui, itaque iste eius?  </p>
+                        </div>
+                        <div class="disclaimer">
+                            <button href="#0" class="disclaimer-hover">disclaimer</button>
+                            <div class="notice content-main">
+                                <header class="title4">Lorem</header>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad nostrum, id rerum nesciunt amet quia placeat ipsa labore, voluptates tenetur eligendi velit atque, dignissimos iure tempora! Nobis, laborum atque labore blanditiis asperiores ullam incidunt minima itaque repudiandae dolorum ab, corrupti at. Provident possimus dolorem delectus!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="calculator">
+                        <div class="sliders-container">
+                            <div class="slider-row">
+                                <div class="slider-row-details">
+                                    <p class="form-heading">how much will you borrow?</p>
+                                    <input type="text" class="input-amount dollar" placeholder="-" onkeypress="return restrictCharacters(event)" maxlength="9">
+                                </div>
+                                <div class="slide-container">
+                                    <p>$</p>
+                                    <form action="">
+                                        <input type="range" class="slider borrow-amount" type="range" class="slider" min="5000" max="500000" value="0" step="5000">
+                                    </form>
+                                    <p>$</p>
+                                </div>
+                            </div>
+                            <div class="slider-row">
+                                <div class="slider-row-details">
+                                    <p class="form-heading">what is the interest rate?</p>
+                                    <input type="text" class="input-amount percent" placeholder="-" onkeypress="return restrictCharacters(event)" maxlength="3">
+                                </div>
+                                <div class="slide-container">
+                                    <p>%</p>
+                                    <form>
+                                        <input type="range" class="slider interest-rate" min="0" max="10" value="0" step=".10">
+                                    </form>
+                                    <p>%</p>
+                                </div>
+                            </div>
+                            <div class="slider-row">
+                                <div class="slider-row-details">
+                                    <p class="form-heading">how long is the loan term (in years)?</p>
+                                    <input type="text" class="input-amount pound" placeholder="-" onkeypress="return restrictCharacters(event)" maxlength="2">
+                                </div>
+                                <div class="slide-container">
+                                    <p>#</p>
+                                    <form>
+                                        <input type="range" class="slider term-length" min="0" max="30" value="0">
+                                    </form>
+                                    <p>#</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="results-container">
+                            <div class="loan-result-monthly">
+                                <p class="form-heading">estimated monthly payment</p>
+                                <p class="monthly-rate">$0</p>
+                                <p class="error-loan">Please reduce your loan amount (Max $5,000,000)</p>
+                                <p class="error-interest">Please reduce your interest rate (Max 10%)</p>
+                                <p class="error-term">Please reduce your term (Max 30 years)</p>
+                            </div>
+                            <div class="loan-result-total">
+                                <div class="total">
+                                    <header class="form-heading">total paid</header>
+                                    <p class="total-paid">$0</p>
+                                </div>
+                                <div class="total">
+                                    <header class="form-heading">total interest paid</header>
+                                    <p class="total-interest">$0</p>
+                                </div>
+                            </div>
+                            <div class="loan-links content-main">
+                                <header>Contact us to get started</header>
+                                <a href="" class="btn">make an appointment</a>
+                                <p><a class="alt" href="">questions</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </body>
+</html>

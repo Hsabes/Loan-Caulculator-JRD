@@ -1,0 +1,95 @@
+/* ========================================================================= */
+/* !SASS VARIABLES & MIXINS */
+/* ========================================================================= */
+
+@mixin flex($justify, $alignitems, $flexwrap, $flexdirection) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $alignitems;
+    flex-wrap: $flexwrap;
+    flex-direction: $flexdirection;
+}
+
+@mixin size($w, $h: $w) {
+    @if ( type-of($w) == 'number' ) {
+        @if ( unitless($w) ) {
+            $w: $w + px;
+        }
+    }
+    @if ( type-of($h) == 'number' ) {
+        @if ( unitless($h) ) {
+            $h: $h + px;
+        }
+    }
+    width: $w;
+    height: $h;
+}
+
+// Breakpoint Mixin
+@mixin break($p, $b: 'max-width'){
+    @media screen and ( #{$b}: #{$p}px ){
+        @content;
+    }
+}
+
+// make sure you change "16" to whatever your main content's font size
+@function rem($px) {
+    @return $px/16*1rem;
+}
+
+/*
+// Use Case: $b (second) variable is optional and defaults to 'max-width'
+
+@include break(1100){
+    h1{
+        background: red;
+    }
+}
+
+// Output
+@media screen and (max-width: 1100px) {
+    h1 { background: red; }
+}
+
+// Also, if you want to specify the 2nd variable for break type (i.e., min-height)
+
+@include break(1100, 'min-height'){
+    h1 {
+        background:red;
+    }
+}
+
+// Output
+@media screen and (min-height: 1100px) {
+    h1 { background: red; }
+}
+*/
+
+/*
+// inline SVGs
+// usage: background-image: inline-svg('<svg><!-- your svg code --></svg>');
+*/
+@function str-replace($string, $search, $replace: '') {
+$index: str-index($string, $search);
+@if $index {
+    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+}
+@return $string;
+}
+
+@function url-encode($string) {
+$map: ( "%": "%25", "<": "%3C", ">": "%3E", "!": "%21", "*": "%2A", "'": "%27", '"': "%22", "(": "%28", ")": "%29", ";": "%3B", ":": "%3A", "@": "%40", "&": "%26", "=": "%3D", "+": "%2B", "$": "%24", ",": "%2C", "/": "%2F", "?": "%3F", "#": "%23", "[": "%5B", "]": "%5D" );
+$new: $string;
+@each $search, $replace in $map {
+    $new: str-replace($new, $search, $replace);
+}
+@return $new;
+}
+
+@function inline-svg($string) {
+@return url('data:image/svg+xml,#{url-encode($string)}');
+}
+
+@function loginbg($color) {
+@return inline-svg('<svg xmlns="http://www.w3.org/2000/svg" width="18" height="21"><path fill="#{$color}" fill-rule="nonzero" d="m13.62 9.797.318.201A8.72 8.72 0 0 1 18 17.368c0 4.843-18 4.843-18 0 0-3.044 1.564-5.723 4.18-7.283L4.49 9.9l.27.238a6.392 6.392 0 0 0 8.532-.043l.33-.3Zm.092 1.271a7.368 7.368 0 0 1-9.115.243l-.207-.16-.187.127c-1.944 1.352-3.11 3.44-3.198 5.804L1 17.368c0 3.48 16 3.48 16 0a7.684 7.684 0 0 0-3.13-6.186ZM9 0c2.761 0 5 2.287 5 5.108 0 2.821-2.239 5.108-5 5.108S4 7.93 4 5.108C4 2.287 6.239 0 9 0Zm0 1.022c-2.21 0-4 1.83-4 4.086 0 2.257 1.79 4.087 4 4.087s4-1.83 4-4.087c0-2.257-1.79-4.086-4-4.086Z"/></svg>');
+}

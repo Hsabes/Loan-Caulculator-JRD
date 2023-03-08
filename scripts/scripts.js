@@ -5,8 +5,6 @@
 
 $(document).ready(function(){
 
-    console.log(1)
-
     //Calculator jQuery
     // Text input fields max length
     $('.input-amount').on('input', function() {
